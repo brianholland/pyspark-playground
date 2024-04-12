@@ -60,6 +60,21 @@
 
 	"mounts": ["source=codespaces-linux-var-lib-docker,target=/var/lib/docker,type=volume"],
 
+	// Forward Jupyter and spark master ports
+	"forwardPorts": [7077, 8888],
+	"portsAttributes": {
+		"7077": {
+			"label": "Spark",
+			"requireLocalPort": true,
+			"onAutoForward": "ignore"
+		},
+		"8888": {
+			"label": "Jupyter",
+			"requireLocalPort": true,
+			"onAutoForward": "ignore"
+		}
+	},
+
 	"runArgs": [
 		"--cap-add=SYS_PTRACE",
 		"--security-opt",
